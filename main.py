@@ -3,11 +3,11 @@ import pygame
 pygame.init()
 clock = pygame.time.Clock()
 class button(pygame.sprite.Sprite):
-    def __init__(self, key, dimensions, coordinates):
+    def __init__(self, key, width, height, coordinates):
         super().__init__()
         self.key = key
         self.coordinates = coordinates
-        self.rect= pygame.Rect(self.coordinates[0], self.coordinates[1], dimensions[0], dimensions[1])
+        self.rect= pygame.Rect(self.coordinates[0], self.coordinates[1], width, height)
         self.color = "white"
 
 
@@ -30,18 +30,31 @@ screen = pygame.display.set_mode((13*scale, 6*scale), pygame.SCALED, vsync=1)
 
 button_list=pygame.sprite.Group()
 
-characters= ["~1234567890-=" , "qwertyuiop[]\\", "asdfghjkl;'" , "zxcvbnm,./"]
+characters= ["~1234567890-=" , "qwertyuiop[]\\", "asdfghjkl;'" , "zxcvbnm,./", "made by osiris"]
+
+offsets={
+    0 : 0,
+    1 : 1 - 1/8,
+    2 : 1 + 1/8,
+    3 : 1.5,
+    4 : 3.5
+}
 
 # creating button classes
+spacing = 1/8 #easily adjustable button settings
+button_size = .5
+
 for y in range(len(characters)):
     for i in range(len(characters[y])):
-        x_coord_base= (((i/2)+1) * scale) #variables for readability while finding the x coord
-        x_coordinate = (x_coord_base + i *( .25 * scale)) + .25*scale
+
+
+        x_coord_base= (((i/2)+1) * scale) + offsets[1] #variables for readability while finding the x coord
+        x_coordinate = (x_coord_base + i *( spacing * scale)) + spacing*scale
 
         y_coord_base = (((y / 2) + 1) * scale)  # variables for readability while finding the x coord
-        y_coordinate = (y_coord_base + y * (.25 * scale)) + .25 * scale
+        y_coordinate = (y_coord_base + y * (spacing * scale)) + spacing * scale
 
-        button_list.add(button(characters[y][i], (.5 * scale, .5 * scale), (x_coordinate, y_coordinate)))
+        button_list.add(button(characters[y][i], button_size * scale, button_size * scale, (x_coordinate, y_coordinate)))
 
 while True:
     for event in pygame.event.get():
@@ -50,7 +63,13 @@ while True:
         if event.type == pygame.KEYDOWN:
             print(event.key)
 
+    screen.fill((0, 0, 0))
+
     pygame.draw.rect(screen, 'white', pygame.Rect(1*scale, 1*scale, 11*scale, 4*scale), 4)
+
+    fps_text = font.render(f"fps: {round(clock.get_fps())}", False, "white")
+    fps_text_rect = fps_text.get_rect(topleft=(0,0))
+    screen.blit(fps_text, fps_text_rect)
 
     for b in button_list:
         b.draw(screen)
