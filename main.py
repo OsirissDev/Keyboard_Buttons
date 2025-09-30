@@ -30,14 +30,28 @@ screen = pygame.display.set_mode((13*scale, 6*scale), pygame.SCALED, vsync=1)
 
 button_list=pygame.sprite.Group()
 
-characters= ["~1234567890-=" , "qwertyuiop[]\\", "asdfghjkl;'" , "zxcvbnm,./", "made by osiris"]
+characters= ["~1234567890-=" , "qwertyuiop[]\\", "asdfghjkl;'" , "zxcvbnm,./","", "made by osiris"]
 
-offsets={
-    0 : 0,
-    1 : 1 - 1/8,
-    2 : 1 + 1/8,
-    3 : 1.5,
-    4 : 3.5
+offsets={ #adds value to the x coordinate to move individual rows a specific amount to account for special keys
+    0 : (0),
+    1 : (1 - 1/8),
+    2 : (1 + 1/8),
+    3 : (1.5),
+    4 : (0),
+    5 : 0
+}
+
+special_keys={ # text, dimensions(width, height, position
+    0 : ["tab",(1-1/8, )]
+    1 :
+    2 :
+    3 :
+    4 :
+    5 :
+    6 :
+    7 :
+    8 :
+    9 :
 }
 
 # creating button classes
@@ -48,7 +62,7 @@ for y in range(len(characters)):
     for i in range(len(characters[y])):
 
 
-        x_coord_base= (((i/2)+1) * scale) + offsets[1] #variables for readability while finding the x coord
+        x_coord_base= (((i/2)+1) * scale) + offsets[y] * scale #variables for readability while finding the x coord
         x_coordinate = (x_coord_base + i *( spacing * scale)) + spacing*scale
 
         y_coord_base = (((y / 2) + 1) * scale)  # variables for readability while finding the x coord
