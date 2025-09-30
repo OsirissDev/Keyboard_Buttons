@@ -26,7 +26,7 @@ class button(pygame.sprite.Sprite):
 scale=150
 font = pygame.font.SysFont("Sans-serif", 1*scale//2)
 
-screen = pygame.display.set_mode((13*scale, 6*scale), pygame.SCALED, vsync=1)
+screen = pygame.display.set_mode((13*scale, 6*scale))
 
 button_list=pygame.sprite.Group()
 
@@ -46,9 +46,21 @@ offsets={ #adds value to the x coordinate to move individual rows a specific amo
 }
 
 special_keys={ # text, dimensions(width, height), position
-    0 : ["tab",(((2-1/8) * button_size) * scale, button_size * scale ) , ((1+spacing) * scale , ((1.5 * scale) + 1 * (spacing * scale)) + spacing * scale)]
-    # 1 :
-    # 2 :
+    0 : [
+        "tab",
+         ((2 - 4/8) * (scale * button_size), (button_size * scale)),
+         ((1 + spacing) * scale, ((1.5 * scale) + 1 * (spacing * scale)) + spacing * scale)
+    ],
+
+    1 : [
+        "del", ((1 + 4/8) * (scale * button_size), (button_size * scale)), ((((((13/2)+1) * scale) + 0) + 13 * (spacing * scale)) + spacing * scale,
+        ((1 * scale) + 0 * (spacing * scale)) + spacing * scale)
+    ],
+    2 : [
+        "caps",
+         ((2 + 1/8) * (scale * button_size), (button_size * scale)),
+        ((1 + spacing) * scale, ((2 * scale) + 2 * (spacing * scale)) + spacing * scale)
+    ]
     # 3 :
     # 4 :
     # 5 :
@@ -72,7 +84,9 @@ for y in range(len(characters)):
 
         button_list.add(button(characters[y][i], button_size * scale, button_size * scale, (x_coordinate, y_coordinate)))
 
-button_list.add(button(special_keys[0][0], special_keys[0][1][0], special_keys[0][1][1], special_keys[0][2]))
+for key in special_keys:
+    button_list.add(button(special_keys[key][0], special_keys[key][1][0], special_keys[key][1][1], special_keys[key][2]))
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: pygame.quit(), exit()
