@@ -32,6 +32,10 @@ button_list=pygame.sprite.Group()
 
 characters= ["~1234567890-=" , "qwertyuiop[]\\", "asdfghjkl;'" , "zxcvbnm,./","", "made by osiris"]
 
+
+spacing = 1/8 #easily adjustable button settings
+button_size = .5
+
 offsets={ #adds value to the x coordinate to move individual rows a specific amount to account for special keys
     0 : (0),
     1 : (1 - 1/8),
@@ -41,23 +45,21 @@ offsets={ #adds value to the x coordinate to move individual rows a specific amo
     5 : 0
 }
 
-special_keys={ # text, dimensions(width, height, position
-    0 : ["tab",(1-1/8, )]
-    1 :
-    2 :
-    3 :
-    4 :
-    5 :
-    6 :
-    7 :
-    8 :
-    9 :
+special_keys={ # text, dimensions(width, height), position
+    0 : ["tab",(((2-1/8) * button_size) * scale, button_size * scale ) , ((1+spacing) * scale , ((1.5 * scale) + 1 * (spacing * scale)) + spacing * scale)]
+    # 1 :
+    # 2 :
+    # 3 :
+    # 4 :
+    # 5 :
+    # 6 :
+    # 7 :
+    # 8 :
+    # 9 :
 }
 
-# creating button classes
-spacing = 1/8 #easily adjustable button settings
-button_size = .5
 
+# creating button classes
 for y in range(len(characters)):
     for i in range(len(characters[y])):
 
@@ -70,6 +72,7 @@ for y in range(len(characters)):
 
         button_list.add(button(characters[y][i], button_size * scale, button_size * scale, (x_coordinate, y_coordinate)))
 
+button_list.add(button(special_keys[0][0], special_keys[0][1][0], special_keys[0][1][1], special_keys[0][2]))
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: pygame.quit(), exit()
