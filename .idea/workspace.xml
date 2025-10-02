@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48cb6f1a-40ea-487c-a0a6-8c2470c9382c" name="Changes" comment="added 3 special keys">
+    <list default="true" id="48cb6f1a-40ea-487c-a0a6-8c2470c9382c" name="Changes" comment="main keyboard is done (missing function keys) &#10;updated draw function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -40,6 +40,11 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="?" />
+    </option>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -135,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759201897330</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="main keyboard is done (missing function keys) &#10;updated draw function">
+      <option name="closed" value="true" />
+      <created>1759370821463</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759370821463</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +168,7 @@
     <MESSAGE value="commit" />
     <MESSAGE value="main keyboard layout" />
     <MESSAGE value="added 3 special keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 3 special keys" />
+    <MESSAGE value="main keyboard is done (missing function keys) &#10;updated draw function" />
+    <option name="LAST_COMMIT_MESSAGE" value="main keyboard is done (missing function keys) &#10;updated draw function" />
   </component>
 </project>

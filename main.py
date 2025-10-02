@@ -15,8 +15,8 @@ class button(pygame.sprite.Sprite):
     def pressed(self, bool):
         self.box_filled = bool
         if bool:
-            self.box_color = 'dark grey'
-        else: self.box_color = 'white'
+            self.text_color = 'dark grey'
+        else: self.text_color = 'white'
 
 
     def draw(self, screen):
@@ -231,9 +231,19 @@ while True:
         if event.type == pygame.QUIT: pygame.quit(), exit()
 
         if event.type == pygame.KEYDOWN:
-            if pygame.key.name(event.key) in alt_key_names.keys():
-                print(alt_key_names[pygame.key.name(event.key)])
-            print(pygame.key.name(event.key))
+            if pygame.key.name(event.key) in alt_key_names.keys(): target = alt_key_names[pygame.key.name(event.key)]
+            else: target = pygame.key.name(event.key)
+            for button in button_list:
+                if button.key == target:
+                    button.pressed(True)
+        if event.type == pygame.KEYUP:
+            if pygame.key.name(event.key) in alt_key_names.keys(): target = alt_key_names[pygame.key.name(event.key)]
+            else: target = pygame.key.name(event.key)
+            for button in button_list:
+                if button.key == target:
+                    button.pressed(False)
+
+
 
     screen.fill((0, 0, 0))
 
