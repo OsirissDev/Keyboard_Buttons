@@ -37,6 +37,7 @@ font = pygame.font.SysFont("Sans-serif", 1*scale//2)
 tiny_font = pygame.font.SysFont("Sans-serif", 1*scale//4)
 
 screen = pygame.display.set_mode((11*scale, 6*scale))
+pygame.display.set_icon(pygame.image.load('Pygame_Icon.png').convert())
 
 button_list=pygame.sprite.Group()
 
